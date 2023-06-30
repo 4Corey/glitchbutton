@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .glitch {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+        .glitch img {
+            width: 100%;
+            height: auto;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .glitch img:nth-child(1) {
+            filter: url('#rgb-shift');
+            animation: glitch-jitter 1s infinite;
+        }
+        .glitch img:nth-child(2) {
+            filter: url('#rgb-shift');
+            animation: glitch-jitter 1.5s infinite;
+        }
+        .glitch img:nth-child(3) {
+            filter: url('#rgb-shift');
+            animation: glitch-jitter 0.5s infinite;
+        }
+        @keyframes glitch-jitter {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-5px, 5px); }
+            20% { transform: translate(5px, 0); }
+            30% { transform: translate(5px, 5px); }
+            40% { transform: translate(-5px, 5px); }
+            50% { transform: translate(5px, -5px); }
+            60% { transform: translate(-5px, 5px); }
+            70% { transform: translate(-5px, -5px); }
+            80% { transform: translate(5px, 0); }
+            90% { transform: translate(-5px, 0); }
+        }
+    </style>
+</head>
+<body>
+    <svg style="visibility: hidden; position: absolute;">
+        <filter id="rgb-shift">
+            <feTurbulence type="fractalNoise" baseFrequency="0.00001" numOctaves="20" result="warp" />
+            <feDisplacementMap xChannelSelector="R" yChannelSelector="G" in="SourceGraphic" in2="warp" scale="30" />
+        </filter>
+    </svg>
+    <a href="https://sites.google.com/view/tophatstudiosevents/project-graduation">
+        <div class="glitch">
+            <img src="GRAD PARTY.png" alt="Logo">
+            <img src="GRAD PARTY.png" alt="Logo">
+            <img src="GRAD PARTY.png" alt="Logo">
+        </div>
+    </a>
+</body>
+</html>
+
+
